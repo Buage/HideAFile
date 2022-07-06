@@ -39,5 +39,7 @@ echo .
 echo Thanks For Using My Tool !
 cd C:\
 pause
-
+echo Closing This Windows In Five Seconds!
+timeout 5
+exit
 
