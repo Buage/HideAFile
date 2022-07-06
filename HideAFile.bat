@@ -7,7 +7,7 @@ echo .
 echo If You Want To Hide A Folder , You Need To Zip It!
 echo .
 echo .
-echo WARNING : IF YOU HIDE A FILE IN A TXT FILE , THE TXT FILE CONTENT WILL BE REPLACED.
+echo WARNING : WE RECOMMEND THAT YOU PUT THE FILES THAT WILL BE HIDDEN IN A COMPRESSED FOLDER
 :start
 
 echo .
