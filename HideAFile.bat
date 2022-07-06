@@ -19,7 +19,7 @@ echo .
 echo .
 echo What is the name of the file that you want to hide?
 set /p File To Hide=
-echo The %File% file will hide the %File Tp Hide% file!
+echo The %File% file will hide the %File To Hide% file!
 timeout 1
 echo Hidding
 copy /b %File% + %File To Hide%
