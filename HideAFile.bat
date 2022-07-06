@@ -1,5 +1,5 @@
 @echo off
-title Secret Files
+title HideAFile
 echo Ready!
 echo Put This File In The Path Where Is Your File To Hide
 echo .
