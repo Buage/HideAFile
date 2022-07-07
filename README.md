@@ -1,9 +1,12 @@
-Hi !
-Thanks For Choosing Me!
+Hey ! 
+Thanks For Choosing My Tools !
 
-How to use:
+1- How To Use?
 
-So first , you will need to put the HideAFie.bat file in the path where is your file that will contain the hidden folder
-Now , run the program and follow the instructions!
-
-Thanks
+A- So Fist , You Will Need To Extract The Folder And Put The HideAFile.bat program where is your file to hide.
+B- When Its Done , You Can Run The Program.
+C- When You Will Run It , You Will Have Two Options : 1 : Hide A File (To hide a file) 2 : Recover A File (See the hidden file)
+D- To Hide A File , Type 1 In The Command Prompt , To Recover A File , Type 2.
+E- When You Typed , HideAFile Will Ask You The Name Of The File You Want To Hide , Its Like The Recover Option.
+F- When Its Done , Press Enter.
+G- You're Done. Your File Is Hidden.
