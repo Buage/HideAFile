@@ -47,6 +47,7 @@ if /I "%c2%" EQU "1" exit
 if /I "%c2%" EQU "2" goto :recover
 goto :choice2
 
+cd C:\Users\masso\OneDrive\Desktop\
 
 pause
 :end
