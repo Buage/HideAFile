@@ -48,7 +48,6 @@ if /I "%c2%" EQU "2" goto :recover
 goto :choice2
 
 
-cd C:\
 pause
 :end
 echo Closing This Windows In Five Seconds!
