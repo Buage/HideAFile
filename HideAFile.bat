@@ -41,13 +41,13 @@ echo File Hidden !
 del %File To Hide%
 echo .
 echo .
+cd C:\
 :choice2
 set /P c2=What Do You Want To Do ? [ 1 = Exit / 2 = Recover A File ]
 if /I "%c2%" EQU "1" exit
 if /I "%c2%" EQU "2" goto :recover
 goto :choice2
 
-cd C:\Users\masso\OneDrive\Desktop\
 
 pause
 :end
@@ -68,6 +68,7 @@ echo .
 echo .
 ren %HFile% %HDFile%
 echo Done!
+cd C:\
 :choice3
 set /P c3=What Do You Want To Do ? [ 1 = Exit / 2 = Hide A File ]
 if /I "%c3%" EQU "1" exit
