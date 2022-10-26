@@ -3,7 +3,7 @@ Thanks For Choosing My Tools !
 
 1- How To Use?
 
-A- So Fist , You Will Need To Extract The Folder And Put The HideAFile.bat program where is your file to hide.
+A- So Fist , You Will Need To Extract The Folder And Put The File To Hide And The File That Contain The Hidden File In The HideAFile Folder , You Can Move It Later.
 
 B- When Its Done , You Can Run The Program.
 
