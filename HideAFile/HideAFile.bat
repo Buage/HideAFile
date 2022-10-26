@@ -4,6 +4,9 @@ echo Ready!
 echo .
 echo .
 echo Please put the file that will contains the hidden file and the file that will be hidden in the HideAFile folder.
+echo .
+echo .
+echo You can move it after using HideAFile.
 
 IF EXIST textcolorgreen Color 2
 IF EXIST textcolorblue Color 1
@@ -86,10 +89,17 @@ cd C:\
 
 :settings
 
-set /P set1=What Do You Want To Do ? [ 1 = Change text color / ]
+set /P set1=What Do You Want To Do ? [ 1 = Change text color / 2 = Open HideAFile on Github ]
 if /I "%set1%" EQU "1" goto :colorchange
+if /I "%set1%" EQU "2" goto :openweb
 
 goto :settings
+
+:openweb
+
+echo Opening Your Web Browser.
+start https://github.com/zShadowSkilled1/HideAFile
+goto :choice
 
 :colorchange
 
