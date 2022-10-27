@@ -8,17 +8,12 @@ echo .
 echo .
 echo You can move it after using HideAFile.
 
-IF EXIST textcolorgreen Color 2
-IF EXIST textcolorblue Color 1
-IF EXIST textcolorred Color 4
-IF EXIST textcolorpurple Color 5
-IF NOT EXIST configs.txt goto :createconfigs
-
-:createconfigs
-
-type nul > config.txt
-
-pause
+IF EXIST configs\textcolorgreen Color 2
+IF EXIST configs\textcolorblue Color 1
+IF EXIST configs\textcolorred Color 4
+IF EXIST configs\textcolorpurple Color 5
+IF NOT EXIST configs\configs.txt goto :createconfigs
+IF NOT EXIST configs\msgboxes.vbs goto :createconfigs
 
 :choice
 set /P c=What Do You Want To Do ? [ 1 = Hide A File / 2 = Recover A File / 3 = Settings ]
@@ -59,12 +54,10 @@ del %File To Hide%
 echo .
 echo .
 cd C:\
-:choice2
-set /P c2=What Do You Want To Do ? [ 1 = Exit / 2 = Recover A File ]
-if /I "%c2%" EQU "1" exit
-if /I "%c2%" EQU "2" goto :recover
-goto :choice2
-
+echo Please restart HideAFile.
+timeout 5
+taskkill /F /IM cmd.exe
+goto :choice
 
 pause
 :end
@@ -86,6 +79,7 @@ echo .
 ren %HFile% %HDFile%
 echo Done!
 cd C:\
+goto :choice
 
 :settings
 
@@ -98,6 +92,8 @@ goto :settings
 :openweb
 
 echo Opening Your Web Browser.
+echo x=msgbox("HideAFile Is Opening Your Web Browser .",0,"HideAFile") > configs\msgboxes.vbs
+start configs\msgboxes.vbs
 start https://github.com/zShadowSkilled1/HideAFile
 goto :choice
 
@@ -113,47 +109,47 @@ if /I "%c10%" EQU "5" goto :whitecolor
 :greencolor
 
 Color 2
-rem echo {[textcolor = Green]}> config.txt
-IF EXIST textcolorblue del /F textcolorblue
-IF EXIST textcolorred del /F textcolorred
-IF EXIST textcolorpurple del /F textcolorpurple
-type nul > textcolorgreen
+rem echo {[textcolor = Green]}> configs\config.txt
+IF EXIST configs\textcolorblue del /F configs\textcolorblue
+IF EXIST configs\textcolorred del /F configs\textcolorred
+IF EXIST configs\textcolorpurple del /F configs\textcolorpurple
+type nul > configs\textcolorgreen
 goto :choice
 
 :bluecolor
 
 Color 1
-IF EXIST textcolorgreen del /F textcolorgreen
-IF EXIST textcolorred del /F textcolorred
-IF EXIST textcolorprple del /F textcolorpurple
-type nul > textcolorblue
+IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
+IF EXIST configs\textcolorred del /F configs\textcolorred
+IF EXIST configs\textcolorprple del /F configs\textcolorpurple
+type nul > configs\textcolorblue
 goto :choice
 
 :redcolor
 
 Color 4
-IF EXIST textcolorgreen del /F textcolorgreen
-IF EXIST textcolorblue del /F textcolorblue
-IF EXIST textcolorpurple del /F textcolorpurple
-type nul > textcolorred
+IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
+IF EXIST configs\textcolorblue del /F configs\textcolorblue
+IF EXIST configs\textcolorpurple del /F configs\textcolorpurple
+type nul > configs\textcolorred
 goto :choice
 
 :purplecolor
 
 Color 5
-IF EXIST textcolorgreen del /F textcolorgreen
-IF EXIST textcolorblue del /F textcolorblue
-IF EXIST textcolorred del /F textcolorred
-type nul > textcolorpurple
+IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
+IF EXIST configs\textcolorblue del /F configs\textcolorblue
+IF EXIST configs\textcolorred del /F configs\textcolorred
+type nul > configs\textcolorpurple
 goto :choice
 
 :whitecolor
 
 Color 7
-IF EXIST textcolorgreen del /F textcolorgreen
-IF EXIST textcolorblue del /F textcolorblue
-IF EXIST textcolorred del /F textcolorred
-IF EXIST textcolorpurple del /F textcolorpurple
+IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
+IF EXIST configs\textcolorblue del /F configs\textcolorblue
+IF EXIST configs\textcolorred del /F configs\textcolorred
+IF EXIST configs\textcolorpurple del /F configs\textcolorpurple
 goto :choice
 
 
@@ -163,5 +159,25 @@ set /P c3=What Do You Want To Do ? [ 1 = Exit / 2 = Hide A File ]
 if /I "%c3%" EQU "1" exit
 if /I "%c3%" EQU "2" goto :start
 goto :choice3
-pause
+
+:createconfigs
+
+MKDIR configs
+IF NOT EXIST configs\config.txt echo .
+IF NOT EXIST configs\config.txt echo .
+IF NOT EXIST configs\config.txt echo Downloading The HideAFile Components.
+echo .
+echo .
+IF NOT EXIST configs\config.txt type nul > configs\config.txt
+IF NOT EXIST configs\msgboxes.vbs type nul > configs\msgboxes.vbs
+IF EXIST configs\msgboxes.vbs echo x=msgbox("HideAFile Is Ready To Be Used .",0,"HideAFile") > configs\msgboxes.vbs
+
+start configs\msgboxes.vbs
+IF EXIST configs\config.txt echo HideAFile Is Ready To Be Used.
+
+echo .
+echo .
+IF NOT EXIST configs\config.txt echo HideAFile Cannot Download Components.
+
+goto :choice
 
