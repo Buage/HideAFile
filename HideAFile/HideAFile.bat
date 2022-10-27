@@ -12,6 +12,8 @@ IF EXIST configs\textcolorgreen Color 2
 IF EXIST configs\textcolorblue Color 1
 IF EXIST configs\textcolorred Color 4
 IF EXIST configs\textcolorpurple Color 5
+IF EXIST configs\redtheme Color 4B
+IF EXIST configs\greentheme goto :greenthemestart
 IF NOT EXIST configs\configs.txt goto :createconfigs
 IF NOT EXIST configs\msgboxes.vbs goto :createconfigs
 
@@ -83,9 +85,10 @@ goto :choice
 
 :settings
 
-set /P set1=What Do You Want To Do ? [ 1 = Change text color / 2 = Open HideAFile on Github ]
+set /P set1=What Do You Want To Do ? [ 1 = Change text color / 2 = Open HideAFile on Github / 3 = Change Theme ]
 if /I "%set1%" EQU "1" goto :colorchange
 if /I "%set1%" EQU "2" goto :openweb
+if /I "%set1%" EQU "3" goto :changetheme
 
 goto :settings
 
@@ -106,6 +109,14 @@ if /I "%c10%" EQU "3" goto :redcolor
 if /I "%c10%" EQU "4" goto :purplecolor
 if /I "%c10%" EQU "5" goto :whitecolor
 
+goto :colorchange
+
+:changetheme
+
+set /P c11=Wich Color ? [ 1 = Green Theme / 2 = Red Theme]
+if /I "%c11%" EQU "1" goto :greentheme
+if /I "%c11%" EQU "2" goto :redtheme
+
 :greencolor
 
 Color 2
@@ -113,6 +124,8 @@ rem echo {[textcolor = Green]}> configs\config.txt
 IF EXIST configs\textcolorblue del /F configs\textcolorblue
 IF EXIST configs\textcolorred del /F configs\textcolorred
 IF EXIST configs\textcolorpurple del /F configs\textcolorpurple
+IF EXIST configs\redtheme del /F configs\redtheme
+IF EXIST configs\greentheme del /F configs\greentheme
 type nul > configs\textcolorgreen
 goto :choice
 
@@ -122,6 +135,8 @@ Color 1
 IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
 IF EXIST configs\textcolorred del /F configs\textcolorred
 IF EXIST configs\textcolorprple del /F configs\textcolorpurple
+IF EXIST configs\redtheme del /F configs\redtheme
+IF EXIST configs\greentheme del /F configs\greentheme
 type nul > configs\textcolorblue
 goto :choice
 
@@ -131,6 +146,8 @@ Color 4
 IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
 IF EXIST configs\textcolorblue del /F configs\textcolorblue
 IF EXIST configs\textcolorpurple del /F configs\textcolorpurple
+IF EXIST configs\redtheme del /F configs\redtheme
+IF EXIST configs\greentheme del /F configs\greentheme
 type nul > configs\textcolorred
 goto :choice
 
@@ -140,6 +157,8 @@ Color 5
 IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
 IF EXIST configs\textcolorblue del /F configs\textcolorblue
 IF EXIST configs\textcolorred del /F configs\textcolorred
+IF EXIST configs\redtheme del /F configs\redtheme
+IF EXIST configs\greentheme del /F configs\greentheme
 type nul > configs\textcolorpurple
 goto :choice
 
@@ -150,6 +169,38 @@ IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
 IF EXIST configs\textcolorblue del /F configs\textcolorblue
 IF EXIST configs\textcolorred del /F configs\textcolorred
 IF EXIST configs\textcolorpurple del /F configs\textcolorpurple
+
+goto :choice
+
+:greentheme
+
+IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
+IF EXIST configs\textcolorblue del /F configs\textcolorblue
+IF EXIST configs\textcolorred del /F configs\textcolorred
+IF EXIST configs\textcolorpurple del /F configs\textcolorpurple
+IF EXIST configs\redtheme del /F configs\redtheme
+Color 2B
+Color 2F
+type nul > configs\greentheme
+goto :choice
+
+:greenthemestart
+Color 2B
+Color 2F
+IF EXIST configs\msgboxes.vbs echo x=msgbox("HideAFile Is Ready To Be Used .",0,"HideAFile") > configs\msgboxes.vbs
+
+start configs\msgboxes.vbs
+goto :choice
+
+:redtheme
+
+IF EXIST configs\textcolorgreen del /F configs\textcolorgreen
+IF EXIST configs\textcolorblue del /F configs\textcolorblue
+IF EXIST configs\textcolorred del /F configs\textcolorred
+IF EXIST configs\textcolorpurple del /F configs\textcolorpurple
+IF EXIST configs\greentheme del /F configs\greentheme
+Color 4B
+type nul > configs\redtheme
 goto :choice
 
 
@@ -162,7 +213,7 @@ goto :choice3
 
 :createconfigs
 
-MKDIR configs
+IF NOT EXIST configs MKDIR configs
 IF NOT EXIST configs\config.txt echo .
 IF NOT EXIST configs\config.txt echo .
 IF NOT EXIST configs\config.txt echo Downloading The HideAFile Components.
